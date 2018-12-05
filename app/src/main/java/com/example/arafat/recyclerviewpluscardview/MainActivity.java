@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<ExampleItem> exampleItems = new ArrayList<>();
         exampleItems.add(new ExampleItem(R.drawable.ic_android, "Line 1", "Line 2"));
-        exampleItems.add(new ExampleItem(R.drawable.ic_android, "Line 3", "Line 4"));
-        exampleItems.add(new ExampleItem(R.drawable.ic_android, "Line 5", "Line 6"));
+        exampleItems.add(new ExampleItem(R.drawable.building, "Line 3", "Line 4"));
+        exampleItems.add(new ExampleItem(R.drawable.school, "Line 5", "Line 6"));
     }
 }

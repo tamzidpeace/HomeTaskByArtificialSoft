@@ -10,26 +10,56 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ExampleAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private ArrayList<ExampleItem> mExampleList;
+    int value = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<ExampleItem> exampleList = new ArrayList<>();
+        createExampleList();
+        createRecyclerView();
 
-        exampleList.add(new ExampleItem(R.drawable.ic_android, "Line 1", "Line 2"));
-        exampleList.add(new ExampleItem(R.drawable.circle_black, "Line 3", "Line 4"));
-        exampleList.add(new ExampleItem(R.drawable.school, "Line 5", "Line 6"));
 
+    }
+
+    private void createRecyclerView() {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new ExampleAdapter(exampleList);
+        mAdapter = new ExampleAdapter(mExampleList);
+
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                if(value==0) {
+                    mExampleList.get(position).changeText1("clicked");
+                    mAdapter.notifyItemChanged(position);
+                    value = 1;
+                } else {
+                    mExampleList.get(position).changeText1("again clicked");
+                    mAdapter.notifyItemChanged(position);
+                    value = 0;
+                }
+
+
+            }
+        });
     }
+
+    private void createExampleList() {
+        mExampleList = new ArrayList<>();
+
+        mExampleList.add(new ExampleItem(R.drawable.anemone, "Anemone", "Line 2"));
+        mExampleList.add(new ExampleItem(R.drawable.calla_lily, "Calla Lily", "Line 4"));
+        mExampleList.add(new ExampleItem(R.drawable.dahlia, "Dahlia", "Line 6"));
+    }
+
 }

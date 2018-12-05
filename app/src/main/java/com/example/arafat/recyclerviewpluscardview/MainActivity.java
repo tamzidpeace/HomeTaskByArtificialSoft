@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     mExampleList.get(position).changeText1("again clicked");
                     mAdapter.notifyItemChanged(position);
                     value = 0;
+                    System.out.println("hello world");
                 }
 
 

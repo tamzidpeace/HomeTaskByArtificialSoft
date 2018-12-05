@@ -1,5 +1,6 @@
 package com.example.arafat.recyclerviewpluscardview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("hello world");
                 }
 
+                Intent intent = new Intent(MainActivity.this, Activity2.class);
+                intent.putExtra("Example Item", mExampleList.get(position));
 
+                startActivity(intent);
             }
         });
     }

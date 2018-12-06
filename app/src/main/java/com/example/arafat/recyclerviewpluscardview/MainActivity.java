@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+
+               /* //not necessary
                 if(value==0) {
                     mExampleList.get(position).changeText1("clicked");
                     mAdapter.notifyItemChanged(position);
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     mAdapter.notifyItemChanged(position);
                     value = 0;
                     System.out.println("hello world");
-                }
+                }*/
 
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
                 intent.putExtra("Example Item", mExampleList.get(position));

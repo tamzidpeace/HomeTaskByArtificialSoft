@@ -32,9 +32,9 @@ public class ExampleItem implements Parcelable {
         }
     };
 
-    public void changeText1(String text) {
+   /* public void changeText1(String text) {
         mText1 = text;
-    }
+    }*/
 
     public int getmImageResource() {
         return mImageResource;

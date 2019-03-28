@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
  public class Activity2 extends AppCompatActivity {
 
     @Override
@@ -17,17 +19,21 @@ import android.widget.TextView;
         Intent intent = getIntent();
         ExampleItem exampleItem = intent.getParcelableExtra("Example Item");
 
-        int image = exampleItem.getmImageResource();
+        String image = exampleItem.getmImageResource();
         String text1 = exampleItem.getmText1();
         String text2 = exampleItem.getmText2();
 
         ImageView imageView = findViewById(R.id.image_activity2);
         TextView textView1 = findViewById(R.id.text1_activity2);
         TextView textView2 = findViewById(R.id.text2_activity2);
+        TextView name = findViewById(R.id.name_activity2);
+        TextView who = findViewById(R.id.who_activity2);
 
-        imageView.setImageResource(image);
+        Picasso.get().load(image).into(imageView);
         textView1.setText(text1);
         textView2.setText(text2);
+        name.setText(exampleItem.getName());
+        who.setText(exampleItem.getWho());
 
     }
 }

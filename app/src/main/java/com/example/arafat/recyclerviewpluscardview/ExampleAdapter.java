@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder> {
@@ -68,7 +70,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder, int i) {
         ExampleItem currentItem = mExampleList.get(i);
-        exampleViewHolder.mImageView.setImageResource(currentItem.getmImageResource());
+        Picasso.get().load(currentItem.getmImageResource()).into(exampleViewHolder.mImageView);
+        //exampleViewHolder.mImageView.setImageResource(currentItem.getmImageResource());
         exampleViewHolder.id.setText(currentItem.getmText1());
         exampleViewHolder.user.setText(currentItem.getmText2());
         exampleViewHolder.name.setText(currentItem.getName());

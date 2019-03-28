@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class ExampleItem implements Parcelable {
-    private int mImageResource;
+    private String mImageResource;
     private String mText1;
     private String mText2;
     private String name;
     private String who;
 
-    public ExampleItem(int mImageResource, String mText1, String mText2, String name, String who) {
+    public ExampleItem(String mImageResource, String mText1, String mText2, String name, String who) {
         this.mImageResource = mImageResource;
         this.mText1 = mText1;
         this.mText2 = mText2;
@@ -21,7 +21,7 @@ public class ExampleItem implements Parcelable {
 
 
     protected ExampleItem(Parcel in) {
-        mImageResource = in.readInt();
+        mImageResource = in.readString();
         mText1 = in.readString();
         mText2 = in.readString();
         name = in.readString();
@@ -44,7 +44,7 @@ public class ExampleItem implements Parcelable {
         mText1 = text;
     }*/
 
-    public int getmImageResource() {
+    public String getmImageResource() {
         return mImageResource;
     }
 
@@ -71,7 +71,7 @@ public class ExampleItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(mImageResource);
+        parcel.writeString(mImageResource);
         parcel.writeString(mText1);
         parcel.writeString(mText2);
         parcel.writeString(name);

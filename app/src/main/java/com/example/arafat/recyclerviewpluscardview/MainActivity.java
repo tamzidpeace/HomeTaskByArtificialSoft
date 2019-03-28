@@ -59,19 +59,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
-               /* //not necessary
-                if(value==0) {
-                    mExampleList.get(position).changeText1("clicked");
-                    mAdapter.notifyItemChanged(position);
-                    value = 1;
-                } else {
-                    mExampleList.get(position).changeText1("again clicked");
-                    mAdapter.notifyItemChanged(position);
-                    value = 0;
-                    System.out.println("hello world");
-                }*/
-
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
                 intent.putExtra("Example Item", mExampleList.get(position));
 
@@ -92,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            for (int i = 0; i <4 ; i++) {
+                            for (int i = 0; i < 4; i++) {
                                 String id = response.getJSONArray("search_result").getJSONObject(i).getString("id");
                                 String user = response.getJSONArray("search_result").getJSONObject(i).getString("User");
                                 String name = response.getJSONArray("search_result").getJSONObject(i).getString("name");
                                 String who = response.getJSONArray("search_result").getJSONObject(i).getString("who");
-                                //String image = response.getJSONArray("search_result").getJSONObject(i).getString("image");
-                                mExampleList.add(new ExampleItem(R.drawable.anemone, id, user, name, who));
+                                String image = response.getJSONArray("search_result").getJSONObject(i).getString("image");
+                                mExampleList.add(new ExampleItem(image, id, user, name, who));
                             }
                             //Log.d(TAG, "onResponse: " + id);
                         } catch (JSONException e) {

@@ -25,14 +25,16 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
         public ImageView mImageView;
-        public TextView mTextView, mTextView2;
+        public TextView id, user, name, who;
 
         public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             mImageView = itemView.findViewById(R.id.imageView);
-            mTextView = itemView.findViewById(R.id.textView);
-            mTextView2 = itemView.findViewById(R.id.textView2);
+            id = itemView.findViewById(R.id.id);
+            user = itemView.findViewById(R.id.user);
+            name = itemView.findViewById(R.id.name);
+            who = itemView.findViewById(R.id.who);
 
             // on clickable
             // this is important part and little bit confusing
@@ -67,8 +69,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder, int i) {
         ExampleItem currentItem = mExampleList.get(i);
         exampleViewHolder.mImageView.setImageResource(currentItem.getmImageResource());
-        exampleViewHolder.mTextView.setText(currentItem.getmText1());
-        exampleViewHolder.mTextView2.setText(currentItem.getmText2());
+        exampleViewHolder.id.setText(currentItem.getmText1());
+        exampleViewHolder.user.setText(currentItem.getmText2());
+        exampleViewHolder.name.setText(currentItem.getName());
+        exampleViewHolder.who.setText(currentItem.getWho());
     }
 
     @Override

@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            for (int i = 0; i < 4; i++) {
+                            for (int i = 0; i < response.getJSONArray("search_result").length() ; i++) {
                                 String id = response.getJSONArray("search_result").getJSONObject(i).getString("id");
                                 String user = response.getJSONArray("search_result").getJSONObject(i).getString("User");
                                 String name = response.getJSONArray("search_result").getJSONObject(i).getString("name");
                                 String who = response.getJSONArray("search_result").getJSONObject(i).getString("who");
                                 String image = response.getJSONArray("search_result").getJSONObject(i).getString("image");
-                                mExampleList.add(new ExampleItem(image, id, user, name, who));
+                                mExampleList.add(new ExampleItem
+                                        (image, "ID: " + id, "User: " + user, "Name: " +name, "Who: " +who));
                             }
                             //Log.d(TAG, "onResponse: " + id);
                         } catch (JSONException e) {
